@@ -1,0 +1,25 @@
+{
+  "name": "monday-unfurly",
+  "description": "A Slack App that unfurls monday.com links",
+  "keywords": [
+    "productivity",
+    "team",
+    "monday.com",
+    "slack"
+  ],
+  "repository": "https://github.com/akira-kuriyama/monday-unfurly",
+  "env": {
+    "SLACK_OAUTH_ACCESS_TOKEN": {
+      "description": "ex) xoxp-XXXXXXXX-XXXXXXXX-XXXXX"
+    },
+    "MONDAY_API_V2_TOKEN": {
+      "description": "monday.com API v2 Token"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    {
+      "plan": "papertrail"
+    }
+  ]
+}
