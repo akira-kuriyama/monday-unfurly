@@ -1,13 +1,15 @@
 FROM ruby:2.6.3-alpine
 
 ENV LANG C.UTF-8
+ENV RACK_ENV production
+ENV PORT 9292
 
 WORKDIR /app
-EXPOSE 4567
+EXPOSE $PORT
 
 RUN gem update bundler
 COPY Gemfile* ./
 RUN bundle install --jobs=4
 COPY . .
 
-CMD bundle exec ruby main.rb -o 0.0.0.0
+CMD bundle exec rackup config.ru -p $PORT
