@@ -16,7 +16,6 @@
       "description": "monday.com API v2 Token"
     }
   },
-  "image": "heroku/ruby",
   "addons": [
     {
       "plan": "papertrail"
