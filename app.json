@@ -15,10 +15,5 @@
     "MONDAY_API_V2_TOKEN": {
       "description": "monday.com API v2 Token"
     }
-  },
-  "addons": [
-    {
-      "plan": "papertrail"
-    }
-  ]
+  }
 }
