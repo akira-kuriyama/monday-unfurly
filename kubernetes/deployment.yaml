@@ -1,0 +1,15 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: hello-world-pod
+    spec:
+      containers:
+        - image: 156133899167.dkr.ecr.ap-northeast-1.amazonaws.com/monday-unfurly:v1.1
+          imagePullPolicy: Always
+          name: hello-world-pod
