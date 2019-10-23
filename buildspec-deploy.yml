@@ -15,15 +15,12 @@ phases:
       - docker build -f Dockerfile-k8s-deploy -t $IMAGE_REPO_NAME:$IMAGE_TAG .
       - echo docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-  post_build:
-    commands:
+
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-
-#  pre_deploy:
-#    commands:
-#      - aws eks update-kubeconfig --name ${EKS_CLUSTER_NAME}
-  deploy:
+  post_build:
     commands:
+#      - aws eks update-kubeconfig --name ${EKS_CLUSTER_NAME}
       - kubectl apply -f kubernetes/deployment.yaml
+
