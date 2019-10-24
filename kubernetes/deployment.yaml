@@ -4,6 +4,9 @@ metadata:
   name: hello-world-deployment
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      name: hello-world-pod
   template:
     metadata:
       labels:
