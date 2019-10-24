@@ -4,7 +4,7 @@ phases:
   build:
     commands:
       - echo 'deploy start...'
-      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn arn:aws:iam::156133899167:role/eksctl-test-hoge2-cluster-ServiceRole-1NUYH7LXGKNRH
+      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME # --role-arn arn:aws:iam::156133899167:role/eksctl-test-hoge2-cluster-ServiceRole-1NUYH7LXGKNRH
       - cat /root/.kube/config
       - kubectl apply -f kubernetes/deployment.yaml
       - kubectl version
