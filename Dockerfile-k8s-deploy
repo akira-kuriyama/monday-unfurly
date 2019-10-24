@@ -24,7 +24,7 @@ RUN wget -O /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-rel
 #    chmod +x /usr/local/bin/kustomize
 
 # install AWS IAM Authenticator
-ENV AWS_IAM_AUTHENTICATOR_RELEASE_DATE 2019-08-14
-ENV AWS_IAM_AUTHENTICATOR_VERSION 1.12.10
+ENV AWS_IAM_AUTHENTICATOR_RELEASE_DATE 2019-08-22
+ENV AWS_IAM_AUTHENTICATOR_VERSION 1.14.6
 RUN wget -O /usr/local/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/${AWS_IAM_AUTHENTICATOR_VERSION}/${AWS_IAM_AUTHENTICATOR_RELEASE_DATE}/bin/linux/amd64/aws-iam-authenticator && \
     chmod +x /usr/local/bin/aws-iam-authenticator
