@@ -22,5 +22,8 @@ phases:
   post_build:
     commands:
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
+      - kubectl version
+      - kubectl get node
+      - kubectl get pod
       - kubectl apply -f kubernetes/deployment.yaml
 
