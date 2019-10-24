@@ -8,6 +8,7 @@ RUN apk --update --no-cache add \
         groff \
         less \
         mailcap \
+        ca-certificates \
         && \
     pip install --upgrade awscli==${AWS_CLI_VERSION} && \
     apk -v --purge del py-pip
