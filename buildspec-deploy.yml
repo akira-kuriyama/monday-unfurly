@@ -5,10 +5,11 @@ phases:
     commands:
       - echo 'deploy start...'
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
+      - cat /root/.kube/config
+      - kubectl apply -f kubernetes/deployment.yaml
       - kubectl version
       - kubectl get node
       - kubectl get pod
-      - kubectl apply -f kubernetes/deployment.yaml
   post_build:
     commands:
 
