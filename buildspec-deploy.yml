@@ -5,7 +5,7 @@ phases:
     commands:
       - echo 'deploy start...'
       - aws sts get-caller-identity
-      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
+      - aws eks update-kubeconfig --region ap-northeast-1 --name $EKS_CLUSTER_NAME
       - cat /root/.kube/config
       - kubectl version
       - kubectl get node
