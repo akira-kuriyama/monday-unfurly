@@ -8,6 +8,9 @@ phases:
       - aws eks update-kubeconfig --region ap-northeast-1 --name $EKS_CLUSTER_NAME
       - cat /root/.kube/config
       - echo '####'
+      - env
+      - echo '####'
+      - ls -alrt /root
       - cat /root/.aws/config
       - cat /root/.aws/credentials
   build:
