@@ -7,9 +7,9 @@ phases:
       - aws sts get-caller-identity
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
       - cat /root/.kube/config
-      - kubectl apply -f kubernetes/deployment.yaml
       - kubectl version
       - kubectl get node
+      - kubectl apply -f kubernetes/deployment.yaml
       - kubectl get pod
   post_build:
     commands:
