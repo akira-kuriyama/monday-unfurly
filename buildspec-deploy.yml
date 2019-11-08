@@ -7,6 +7,9 @@ phases:
       - aws sts get-caller-identity
       - aws eks update-kubeconfig --region ap-northeast-1 --name $EKS_CLUSTER_NAME
       - cat /root/.kube/config
+      - echo '####'
+      - cat /root/.aws/config
+      - cat /root/.aws/credentials
   build:
     commands:
       - echo '### build start...'
