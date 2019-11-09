@@ -34,4 +34,4 @@ workflows:
       - build:
           context: eks-deploy
       - aws-cli-example:
-        context: eks-deploy
+          context: eks-deploy
