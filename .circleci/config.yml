@@ -1,30 +1,28 @@
 version: 2.1
 orbs:
-  aws-cli: circleci/aws-cli@0.1.16
+  aws-eks: circleci/aws-eks@0.2.5
+  kubernetes: circleci/kubernetes@0.10.0
 jobs:
-  build:
-    docker:
-      - image: debian:stretch
-
+  test-cluster:
+    executor: aws-eks/python3
+    parameters:
+      cluster-name:
+        description: |
+          Name of the EKS cluster
+        type: string
     steps:
-      - checkout
+      - kubernetes/install
+      - aws-eks/update-kubeconfig-with-authenticator:
+          cluster-name: << parameters.cluster-name >>
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
-  aws-cli-example:
-    executor: aws-cli/default
-    steps:
-      - checkout
-      - aws-cli/setup:
-          profile-name: eks-deploy-user
-      - run: kubectl version
+          command: |
+            kubectl get node
+          name: Test cluster
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build:
+      - test-cluster:
           context: eks-deploy
-      - aws-cli-example:
-          context: eks-deploy
+          cluster-name: test-20191109-1
