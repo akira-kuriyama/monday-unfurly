@@ -18,7 +18,7 @@ jobs:
       - checkout
       - aws-cli/setup:
           profile-name: eks-deploy-user
-      - run: aws eks list-clusters
+      - run: kubectl version
 
 workflows:
   version: 2
