@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@0.1.16
 jobs:
   build:
     docker:
@@ -18,9 +20,18 @@ jobs:
       - run:
           name: env
           command: env
+  aws-cli-example:
+    executor: aws-cli/default
+    steps:
+      - checkout
+      - aws-cli/setup:
+          profile-name: eks-deploy-user
+      - run: echo "Run your code here"
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build:
           context: eks-deploy
+      - aws-cli-example:
+        context: eks-deploy
