@@ -14,3 +14,13 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
+
+      - run:
+          name: env
+          command: env
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
+          context: eks-deploy
