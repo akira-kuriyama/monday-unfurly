@@ -16,7 +16,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
       - run:
           command: |
-            kubectl get node
+            kubectl apply -f kubernetes/deployment.yaml
           name: Test cluster
 
 workflows:
