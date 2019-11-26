@@ -14,6 +14,7 @@ Unfurl a monday.com Link entered in Slack.
 ### 2. Set up Slack
 
 Please follow the steps below
+
 https://api.slack.com/docs/message-link-unfurling
 
 
