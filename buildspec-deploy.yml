@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo '### pre build start...'
+      - aws sts get-caller-identity
+      - aws eks update-kubeconfig --region ap-northeast-1 --name $EKS_CLUSTER_NAME
+      - cat /root/.kube/config
+      - echo '####'
+      - env
+      - echo '####'
+      - ls -alrt /root
+      - cat /root/.aws/config
+      - cat /root/.aws/credentials
+  build:
+    commands:
+      - echo '### build start...'
+      - cat /root/.kube/config
+      - kubectl version
+      - kubectl get node
+      - kubectl apply -f kubernetes/deployment.yaml
+      - kubectl get pod
+
+
