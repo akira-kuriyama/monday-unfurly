@@ -42,6 +42,7 @@ class MondayClient
       Net::HTTP::Post.new(uri.request_uri).tap do |req|
         req['Content-Type'] = 'application/json; charset=utf-8'
         req["Authorization"] = MONDAY_API_V2_TOKEN
+        req['API-Version'] = '2024-01'
         req.body = body
       end
     end
