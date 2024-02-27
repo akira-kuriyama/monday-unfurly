@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.6.3"
+ruby "2.7.8"
 
 gem 'sinatra'
 gem 'sinatra-contrib'
