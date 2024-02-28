@@ -1,16 +1,29 @@
-version: 2
+version: 2.1
+orbs:
+  aws-eks: circleci/aws-eks@0.2.5
+  kubernetes: circleci/kubernetes@0.10.0
 jobs:
-  build:
-    docker:
-      - image: debian:stretch
-
+  test-cluster:
+    executor: aws-eks/python3
+    parameters:
+      cluster-name:
+        description: |
+          Name of the EKS cluster
+        type: string
     steps:
       - checkout
-
+      - kubernetes/install
+      - aws-eks/update-kubeconfig-with-authenticator:
+          cluster-name: << parameters.cluster-name >>
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          command: |
+            kubectl apply -f kubernetes/deployment.yaml
+          name: Test cluster
 
-      - run:
-          name: Print the Current Time
-          command: date 
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test-cluster:
+          context: eks-deploy
+          cluster-name: test-20191109-1
